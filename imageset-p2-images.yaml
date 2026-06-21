@@ -1,7 +1,7 @@
 
 # Phase 2 — additionalImages only (RHOAI 3.4.1 disconnected helper)
 # Source: https://github.com/red-hat-data-services/rhoai-disconnected-install-helper/blob/main/rhoai-3.4.1.md
-#
+# 📌 images to copy 63
 # Operators were mirrored in Phase 1 — do NOT repeat operators here.
 #
 # Logins before mirror:
