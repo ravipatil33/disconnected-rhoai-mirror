@@ -14,14 +14,16 @@ Covers Image Set Configurations required to mirror OpenShift AI images into disc
 
 #### Package names required and mirrored and catalogs:
 - Most of these are from redhat-operator-index catalog.
-  
+  ```
    connectivity link operator  -> rhcl-operator
    leader worker set operator  -> leader-worker-set
    kueue                       -> kueue-operator
    jobset operator             -> job-set
    cert-manager-operator       -> openshift-cert-manager-operator
    servicemeshoperator         -> servicemeshoperator3
-This can be checked by specifying catalog and package options. 
+  ```
+  
+This can be validated using oc mirror by specifying catalog and package options. 
 $ oc mirror list operators --catalog=... --package=<name> --v2
 add DEFAULT CHANNEL to ImageSetConfiguration
 
@@ -52,26 +54,6 @@ rhods-operator  stable-3.3                rhods-operator.3.3.3
 rhods-operator  stable-3.4                rhods-operator.3.4.0
 rhods-operator  stable-3.x                rhods-operator.3.4.0
 rhods-operator  support-required-upgrade  rhods-operator.3.3.3
-
-
-$ oc-mirror list operators   --catalog=registry.redhat.io/redhat/certified-operator-index:v4.19   --package=gpu-operator-certified 
-NAME                    DISPLAY NAME  DEFAULT CHANNEL
-gpu-operator-certified                v26.3
-
-PACKAGE                 CHANNEL  HEAD
-gpu-operator-certified  stable   gpu-operator-certified.v26.3.2
-gpu-operator-certified  v1.10    gpu-operator-certified.v1.10.1
-gpu-operator-certified  v1.11    gpu-operator-certified.v1.11.1
-gpu-operator-certified  v22.9    gpu-operator-certified.v22.9.2
-gpu-operator-certified  v23.3    gpu-operator-certified.v23.3.2
-gpu-operator-certified  v23.6    gpu-operator-certified.v23.6.1
-gpu-operator-certified  v23.9    gpu-operator-certified.v23.9.2
-gpu-operator-certified  v24.3    gpu-operator-certified.v24.3.0
-gpu-operator-certified  v24.6    gpu-operator-certified.v24.6.2
-gpu-operator-certified  v24.9    gpu-operator-certified.v24.9.2
-gpu-operator-certified  v25.10   gpu-operator-certified.v25.10.1
-gpu-operator-certified  v25.3    gpu-operator-certified.v25.3.4
-gpu-operator-certified  v26.3    gpu-operator-certified.v26.3.2
 
 $ oc-mirror list operators \
   --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 \
@@ -164,19 +146,42 @@ opentelemetry-product                stable
 PACKAGE                CHANNEL  HEAD
 opentelemetry-product  stable   opentelemetry-operator.v0.152.0-1
 
-$ oc-mirror list operators --catalog=registry.redhat.io/redhat/community-operator-index:v4.19 --package=grafana-operator
 
-NAME              DISPLAY NAME  DEFAULT CHANNEL
-grafana-operator                v5
-PACKAGE           CHANNEL  HEAD
-grafana-operator  v5       grafana-operator.v5.24.0
 
 ```
 
 -  From catalogs : certified and community 
    gpu-operator-certified      -> certified-operator-index (not redhat)
+   ```
+   $ oc-mirror list operators   --catalog=registry.redhat.io/redhat/certified-operator-index:v4.19   --package=gpu-operator-certified 
+NAME                    DISPLAY NAME  DEFAULT CHANNEL
+gpu-operator-certified                v26.3
+
+PACKAGE                 CHANNEL  HEAD
+gpu-operator-certified  stable   gpu-operator-certified.v26.3.2
+gpu-operator-certified  v1.10    gpu-operator-certified.v1.10.1
+gpu-operator-certified  v1.11    gpu-operator-certified.v1.11.1
+gpu-operator-certified  v22.9    gpu-operator-certified.v22.9.2
+gpu-operator-certified  v23.3    gpu-operator-certified.v23.3.2
+gpu-operator-certified  v23.6    gpu-operator-certified.v23.6.1
+gpu-operator-certified  v23.9    gpu-operator-certified.v23.9.2
+gpu-operator-certified  v24.3    gpu-operator-certified.v24.3.0
+gpu-operator-certified  v24.6    gpu-operator-certified.v24.6.2
+gpu-operator-certified  v24.9    gpu-operator-certified.v24.9.2
+gpu-operator-certified  v25.10   gpu-operator-certified.v25.10.1
+gpu-operator-certified  v25.3    gpu-operator-certified.v25.3.4
+gpu-operator-certified  v26.3    gpu-operator-certified.v26.3.2
+   ```
    grafana operator            -> community-operator-index (not redhat)
 
+   ```
+   $ oc-mirror list operators --catalog=registry.redhat.io/redhat/community-operator-index:v4.19 --package=grafana-operator
+
+NAME              DISPLAY NAME  DEFAULT CHANNEL
+grafana-operator                v5
+PACKAGE           CHANNEL  HEAD
+grafana-operator  v5       grafana-operator.v5.24.0
+   ```
 ### Prerequisites on connected bastion (RHEL 9) - Use this disk to push to private registry:
 
 1. Login to registry and to private registry
