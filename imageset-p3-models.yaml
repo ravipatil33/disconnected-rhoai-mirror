@@ -1,0 +1,18 @@
+## PHASE 3 - To get the required oci artifacts mirrored in disconnected environment. 
+# this is for example and subject to change. 
+kind: ImageSetConfiguration
+apiVersion: mirror.openshift.io/v2alpha1
+#apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 15
+#storageConfig:
+#   registry:
+#    imageURL: <YOUR_QUAY_HOST>:443/mirror/oc-mirror-metadata
+#    skipTLS: false   # true only if Quay uses self-signed TLS
+
+mirror:
+  operators: []       # Mirrored in Phase 1 
+  additionalImages:   
+  # Model Artifacts 
+    - name: registry.redhat.io/rhai/modelcar-nvidia-nemotron-3-nano-30b-a3b-fp8:3.0
+    - name: registry.redhat.io/rhai/modelcar-granite-4-0-h-small-fp8-dynamic:3.0
+    - name: registry.redhat.io/rhelai1/modelcar-gpt-oss-120b:1.5
