@@ -27,18 +27,19 @@ Covers Image Set Configurations required to mirror OpenShift AI images into disc
 
 ### Prerequisites on connected bastion (RHEL 9) - Use this disk to push to private registry:
 
-1. Login to registry and to private registry 
+1. Login to registry and to private registry
+   ```
  $  podman login registry.redhat.io
  $  podman login <YOUR_QUAY_HOST>:443
-
-2. Mirror to disk (~120–180 GB for this operator set; use 1 TB disk):
+```
+3. Mirror to disk (~120–180 GB for this operator set; use 1 TB disk):
 $   oc mirror -c imageset-p1-rhoai.yaml file:///data/mymirror --v2
 
-3. Push to private Quay:
+4. Push to private Quay:
 $  oc mirror -c imageset-p1-rhoai.yaml \
    --from file:///data/mymirror docker://<YOUR_QUAY_HOST>:443 --v2
 
-4. Apply generated catalog/IDMS (merge with existing foundation — do not replace):
+5. Apply generated catalog/IDMS (merge with existing foundation — do not replace):
 $  oc apply -f /data/mymirror/working-dir/cluster-resources/
 
 #### Additional Notes 
