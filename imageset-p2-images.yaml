@@ -1,21 +1,28 @@
-# Phase 2: additionalImages from rhoai-disconnected-install-helper (notebooks, etc.)
-# Use - imageset-p2-rhoai.yaml
-
-# This will have just the images for disconnected 
-# https://github.com/red-hat-data-services/rhoai-disconnected-install-helper/blob/main/rhoai-3.4.1.md
+# Phase 2 — additionalImages only (RHOAI 3.4.1 disconnected helper)
+# Source: https://github.com/red-hat-data-services/rhoai-disconnected-install-helper/blob/main/rhoai-3.4.1.md
+#
+# Operators were mirrored in Phase 1 — do NOT repeat operators here.
+#
+# Logins before mirror:
+#   podman login registry.redhat.io
+#   podman login quay.io
+#
+# Mirror to disk:
+#   tmux new -s p2-mirror
+#   oc mirror -c imageset-p2-rhoai.yaml file:///data/p2-mirror --v2 2>&1 | tee /data/p2-mirror.log
+#
+# Push later (secure zone):
+#   oc mirror -c imageset-p2-rhoai.yaml \
+#     --from file:///data/p2-mirror docker://<YOUR_QUAY_HOST>:443 --v2
+#
+# Merge working-dir/cluster-resources/ IDMS for quay.io/modh and registry.redhat.io/rhoai
 
 kind: ImageSetConfiguration
 apiVersion: mirror.openshift.io/v2alpha1
-#apiVersion: mirror.openshift.io/v1alpha2
 archiveSize: 15
-#storageConfig:
-#   registry:
-#    imageURL: <YOUR_QUAY_HOST>:443/mirror/oc-mirror-metadata
-#    skipTLS: false   # true only if Quay uses self-signed TLS
 
 mirror:
-  operators: []       # Mirrored in Phase 1 
-  additionalImages:   
+  additionalImages:
     - name: quay.io/modh/codeserver@sha256:1fd51b0e8a14995f1f7273a4b0b40f6e7e27e225ab179959747846e54079d61e
     - name: quay.io/modh/codeserver@sha256:92f2a10dde5c96b29324426b4325401e8f4a0d257e439927172d5fe909289c44
     - name: quay.io/modh/codeserver@sha256:b1a048f3711149e36a89e0eda1a5601130fb536ecc0aabae42ab6e4d26977354
