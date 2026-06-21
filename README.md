@@ -29,9 +29,9 @@ Covers Image Set Configurations required to mirror OpenShift AI images into disc
 
 1. Login to registry and to private registry
    ```
- $  podman login registry.redhat.io
- $  podman login <YOUR_QUAY_HOST>:443
-```
+   $  podman login registry.redhat.io
+   $  podman login <YOUR_QUAY_HOST>:443
+   ```
 3. Mirror to disk (~120–180 GB for this operator set; use 1 TB disk):
 $   oc mirror -c imageset-p1-rhoai.yaml file:///data/mymirror --v2
 
