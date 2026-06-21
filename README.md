@@ -151,8 +151,9 @@ opentelemetry-product  stable   opentelemetry-operator.v0.152.0-1
 ```
 
 -  From catalogs : certified and community 
-   gpu-operator-certified      -> certified-operator-index (not redhat)
-   ```
+
+gpu-operator-certified      -> certified-operator-index (not redhat)
+```
    $ oc-mirror list operators   --catalog=registry.redhat.io/redhat/certified-operator-index:v4.19   --package=gpu-operator-certified 
 NAME                    DISPLAY NAME  DEFAULT CHANNEL
 gpu-operator-certified                v26.3
@@ -171,17 +172,18 @@ gpu-operator-certified  v24.9    gpu-operator-certified.v24.9.2
 gpu-operator-certified  v25.10   gpu-operator-certified.v25.10.1
 gpu-operator-certified  v25.3    gpu-operator-certified.v25.3.4
 gpu-operator-certified  v26.3    gpu-operator-certified.v26.3.2
-   ```
-   grafana operator            -> community-operator-index (not redhat)
+```
 
-   ```
+grafana operator            -> community-operator-index (not redhat)
+
+```
    $ oc-mirror list operators --catalog=registry.redhat.io/redhat/community-operator-index:v4.19 --package=grafana-operator
 
 NAME              DISPLAY NAME  DEFAULT CHANNEL
 grafana-operator                v5
 PACKAGE           CHANNEL  HEAD
 grafana-operator  v5       grafana-operator.v5.24.0
-   ```
+```
 ### Prerequisites on connected bastion (RHEL 9) - Use this disk to push to private registry:
 
 1. Login to registry and to private registry
