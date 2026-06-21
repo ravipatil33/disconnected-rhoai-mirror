@@ -209,11 +209,12 @@ grafana-operator  v5       grafana-operator.v5.24.0
 
 #### Additional Notes 
  Validate exact package name in catalog : once per catalog (do NOT loop oc mirror list per package):
-    ```
+ 
+```
     $   oc mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --v2 | tee /tmp/rh.txt
     $   oc mirror list operators --catalog=registry.redhat.io/redhat/certified-operator-index:v4.19 --v2 | tee /tmp/cert.txt
     $   oc mirror list operators --catalog=registry.redhat.io/redhat/community-operator-index:v4.19 --v2 | tee /tmp/community.txt
-   ```
+```
 
 - Phase 2: additionalImages from rhoai-disconnected-install-helper (notebooks, etc.)
  Use - imageset-p2-rhoai.yaml
