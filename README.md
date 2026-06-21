@@ -24,8 +24,6 @@ Covers Image Set Configurations required to mirror OpenShift AI images into disc
   ```
   
 This can be validated using oc mirror by specifying catalog and package options. 
-$ oc mirror list operators --catalog=... --package=<name> --v2
-add DEFAULT CHANNEL to ImageSetConfiguration
 
 ```
 $ oc-mirror list operators   --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19   --package=rhods-operator 
@@ -220,3 +218,20 @@ grafana-operator  v5       grafana-operator.v5.24.0
  Use - imageset-p2-rhoai.yaml
 - Phase 3: ModelCars (mirror separately — very large)
  Use - imageset-p3-rhoai.yaml 
+
+
+#### ISSUES 
+
+1. Incorrect package name used.
+```
+# Validate the catalog and package name exactly to get default channel and exact package name. 
+$ oc mirror list operators --catalog=... --package=<name> --v2
+add DEFAULT CHANNEL to ImageSetConfiguration
+```
+
+2. Home Directory getting full due to oc-mirror cache
+```
+# Use option as '--cache-dir' and point to /data/ directory which has enough space
+# home directory - used if it has 30 or 50 GB that will get full with cache. 
+ --cache-dir /data/oc-mirror-cache/
+```
