@@ -7,12 +7,12 @@ Covers Image Set Configurations required to mirror OpenShift AI images into disc
  Scope: All OpenShift AI and dependency operators (no additionalImages, no ModelCars).
  Mirror everything to private Quay registry or to disk ; install OpenShift AI and operators on the cluster.
 
-##### Catalogs used:
+#### Catalogs used:
    - redhat-operator-index:v4.19
    - certified-operator-index:v4.19
    - community-operator-index:v4.19
 
-# Package names required and mirrored and catalogs:
+#### Package names required and mirrored and catalogs:
 - Most of these are from redhat-operator-index catalog. 
    connectivity link operator  -> rhcl-operator
    leader worker set operator  -> leader-worker-set
@@ -25,7 +25,7 @@ Covers Image Set Configurations required to mirror OpenShift AI images into disc
    gpu-operator-certified      -> certified-operator-index (not redhat)
    grafana operator            -> community-operator-index (not redhat)
 
-##### Prerequisites on connected bastion (RHEL 9) - Use this disk to push to private registry:
+### Prerequisites on connected bastion (RHEL 9) - Use this disk to push to private registry:
 
 1. Login to registry and to private registry 
  $  podman login registry.redhat.io
@@ -41,8 +41,7 @@ $  oc mirror -c imageset-p1-rhoai.yaml \
 4. Apply generated catalog/IDMS (merge with existing foundation — do not replace):
 $  oc apply -f /data/mymirror/working-dir/cluster-resources/
 
-
-Additional Notes 
+#### Additional Notes 
  Validate exact package name in catalog : once per catalog (do NOT loop oc mirror list per package):
 $   oc mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --v2 | tee /tmp/rh.txt
 $   oc mirror list operators --catalog=registry.redhat.io/redhat/certified-operator-index:v4.19 --v2 | tee /tmp/cert.txt
