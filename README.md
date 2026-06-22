@@ -228,7 +228,24 @@ grafana-operator  v5       grafana-operator.v5.24.0
 $ oc mirror list operators --catalog=... --package=<name> --v2
 add DEFAULT CHANNEL to ImageSetConfiguration
 ```
-
+Following are detailed commands for individual operator
+```
+   60  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=connectivity-link-operator
+   61  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=rhcl-operator
+   62  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=leader-worker-set-operator
+   63  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=kueue
+   64  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=kueue-operator
+   65  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=lws-operator
+   66  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=jobset-operator
+   67  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=LeaderWorkerSet
+   68  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=leader-worker-set
+   69  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=job-set
+   70  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=
+   71  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=tempo-product
+   72  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=cluster-observability-operator
+   73  oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.19 --package=opentelemetry-product
+   74  oc-mirror list operators --catalog=registry.redhat.io/redhat/community-operator-index:v4.19 --package=grafana-operator
+```
 2. Home Directory getting full due to oc-mirror cache
 ```
 # Use option as '--cache-dir' and point to /data/ directory which has enough space
