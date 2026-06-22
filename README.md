@@ -252,3 +252,19 @@ Following are detailed commands for individual operator
 # home directory - used if it has 30 or 50 GB that will get full with cache. 
  --cache-dir /data/oc-mirror-cache/
 ```
+
+#### COMMANDS TO MIRROR 
+Directory : /data with 1 TB space on the bastion system. 
+
+1. Phase 1 : OpenShift AI operator and dependent operators
+```
+# oc-mirror --cache-dir /data/oc-mirror-cache/ --image-timeout 3h --retry-times 5 --config imageset-p1-rhoai.yaml file:///data/p1-mirror/ --v2 | tee -a /tmp/p1-rhoai.log
+```
+2. Phase 2 : AdditionalImages for OpenShift AI 
+```
+# oc-mirror --cache-dir /data/oc-mirror-cache/ --image-timeout 3h --retry-times 5 --config imageset-p2-images.yaml file:///data/p2-mirror/ --v2 | tee -a /tmp/p2-images.log
+```
+3. Phase 3 :
+```
+# oc-mirror --cache-dir /data/oc-mirror-cache/ --image-timeout 3h --retry-times 5 --config imageset-p3-models.yaml file:///data/p3-mirror/ --v2 | tee -a /tmp/p3-models.log
+```
