@@ -264,7 +264,7 @@ Directory : /data with 1 TB space on the bastion system.
 ```
 # oc-mirror --cache-dir /data/oc-mirror-cache/ --image-timeout 3h --retry-times 5 --config imageset-p2-images.yaml file:///data/p2-mirror/ --v2 | tee -a /tmp/p2-images.log
 ```
-3. Phase 3 :
+3. Phase 3 : Model OCI artifacts to use OpenShift AI model serving
 ```
 # oc-mirror --cache-dir /data/oc-mirror-cache/ --image-timeout 3h --retry-times 5 --config imageset-p3-models.yaml file:///data/p3-mirror/ --v2 | tee -a /tmp/p3-models.log
 ```
